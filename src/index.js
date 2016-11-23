@@ -7,13 +7,13 @@ import App from './components/app'
 
 const store = createStore(blackjackReducer)
 
-
-
-const render = () => {ReactDOM.render(<App store={store}/>, document.getElementById('container'))}
-render()
-store.subscribe(render)
 store.dispatch(fetchDeck())
 store.dispatch(setAICards(store.getState()))
 store.dispatch(setUserCards(store.getState()))
+
+const render = () => {ReactDOM.render(<App store={store}/>, document.getElementById('container'))}
+render()
+
+store.subscribe(render)
 
 require('../test/index-test.js')  // Leave this in!
